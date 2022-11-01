@@ -12,17 +12,12 @@ jobs:
         with:
           submodules: true
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
       - uses: actions/setup-node@v3
         with:
           node-version: lts/hydrogen
 
       - name: Build
         run: |
-        
           npm install -g bower grunt
           ls -la
           ./sbt stage
