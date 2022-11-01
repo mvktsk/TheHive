@@ -16,12 +16,19 @@ jobs:
           distribution: 'zulu'
           java-version: '8'
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: lts/hydrogen
+#      - uses: actions/setup-node@v3
+#        with:
+#          node-version: lts/hydrogen
+
+      - name: Curl 
+        run: |
+          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash
 
       - name: Build
         run: |
+          export NVM_DIR="${HOME}/.nvm" 
+          . "$NVM_DIR/nvm.sh"
+          nvm --lts
           npm install -g bower grunt
           ls -la
           ./sbt stage
