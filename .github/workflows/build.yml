@@ -16,9 +16,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: lts/hydrogen
 
       - name: Build
         run: |
-          nvm install --lts
+        
           npm install -g bower grunt
+          ls -la
           ./sbt stage
